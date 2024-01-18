@@ -693,10 +693,12 @@ class PolyBus {
   }
 
   static void setPixelColor(void* busPtr, uint8_t busType, uint16_t pix, uint32_t c, uint8_t co) {
-    uint8_t r = c >> 16;
-    uint8_t g = c >> 8;
-    uint8_t b = c >> 0;
-    uint8_t w = c >> 24;
+/// Color order RGB + B-W swapped correctly
+    uint8_t g = c >> 16;
+    uint8_t b = c >> 8;
+    uint8_t w = c >> 0;
+    uint8_t r = c >> 24;
+///
     RgbwColor col;
 
     // reorder channels to selected order
